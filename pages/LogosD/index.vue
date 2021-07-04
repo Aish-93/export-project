@@ -10,11 +10,10 @@
   padding: 0px;
 }
 * {
-  font-family: "Lato", sans-serif;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Lato&family=Roboto:wght@400;700;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap');
 </style>
 <script>
 import AppTestLogosd from "~/components/Test/logosd";

@@ -8,7 +8,7 @@
 
 </style>
 <script>
-import AppTestCal from '~/components/test/calculator';
+import AppTestCal from '~/components/Test/calculator';
 export default {
   components:{
     AppTestCal,

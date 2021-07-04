@@ -33,8 +33,11 @@
           class="pa-2 mr-4 ml-4 wid"
           outlined
           tile
+          
+          :ripple="false"
           @click="tab = index"
           :class="{ activez: tab === index }"
+          
         >
           <img :src="tab === index ? temp.iconz : temp.icon" class="benz" />
 
@@ -42,6 +45,7 @@
             fa-arrow-right
           </v-icon> -->
           <div class="sides">{{ temp.title }}</div>
+          <div class="sides">{{ temp.num }}</div>
 
           <v-row class="sst" justify="center">
             <div v-if="tab === index">
@@ -68,10 +72,9 @@
     </v-row>
   </v-container>
 </template>
-<style lang="scss" scoped>
+<style lang="scss">
 * {
-  font-family: "Lato", sans-serif;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight:bolder;
 }
 .sst {
@@ -80,15 +83,18 @@
   height: 20px;
 }
 .arrow {
-  border: solid rgb(255, 255, 255);
-  border-width: 0 3px 3px 0;
+  border: solid rgb(235, 235, 235);
+  border-width: 0 0px 0px 0;
   display: inline-block;
-  padding: 25px;
-  background-color: rgb(255, 255, 255);
+  padding: 15px;
+  background-color: rgb(235, 235, 235);
+  position: absolute;
 }
 .down {
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
+  position: relative;
+  top:24px;
 }
 
 .benz {
@@ -113,10 +119,11 @@
 .sides {
   // cards heading
   font-size: 17px;
-  padding: 15px;
-  font-weight: 400;
+  // padding: 15px;
+  font-weight: 700;
+  // margin-bottom: 15px;
 }
-.wid {
+.v-sheet.v-card.wid {
   // used in cards of logos
   width: 200px;
   height: 160px;
@@ -129,25 +136,39 @@
   justify-content: center;
   align-content: center;
   text-align: center;
-  background-image: linear-gradient(145deg, #4f4f4f 0%, #282828 100%);
+  // background-image: linear-gradient(145deg, #4f4f4f 0%, #282828 100%);
+  background: transparent;
   transition: all 0.3s linear;
   color: white;
-  font-family: "Lato", sans-serif;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 15px !important
 }
+.v-sheet.v-card.wid.activez {
+  .sides {
+    color: #000;
+  }
+}
+// .wid:focus {
+//   background-color: rgb(235, 235, 235) !important;
+//   background-image: linear-gradient(5deg, rgb(235,235,235),rgb(235,235,235)) !important; 
+// }
 .wid:hover {
-  background-image: linear-gradient(145deg, rgba(255, 255, 255, 0.384), white);
-  color: black;
-  font-weight: bold;
+  background-image: linear-gradient(5deg, rgb(235, 235, 235), rgb(235,235,235)) !important;
+  // background-image: rgb(235,235,235) !important;
+  color: black !important;
+  // font-weight: bold;
   text-decoration: underline;
-  text-decoration-color: orange;
+  text-decoration-color: #ffcc29;
  
   // filter: brightness(0);
   img {
     // box-shadow: 6px 6px 40px 1px rgba(0, 217, 255, 0.2);
-    border-radius: 50%;
+    border-radius: 30%;
     filter: brightness(0);
   }
+}
+.v-card--link.wid:focus:before {
+  opacity: 00;
 }
 
 .colr {
@@ -171,16 +192,18 @@
 }
 .btnz {
   // for button
-  font-size: 16px;
+  font-size: 16px !important;
   font-weight: 400;
   line-height: 2.8;
   border-radius: 25px;
   cursor: pointer;
   text-transform: none;
-  color: black;
+  color: black !important;
   font-weight: bold;
   height: 50px !important;
+  width: 190px;
   overflow: hidden;
+  
 }
 .btnz:hover {
   background-color:#ffcc29 !important;
@@ -230,18 +253,18 @@ img {
   padding: 10px;
 }
 .activez {
-  background-image: linear-gradient(105deg, rgb(255, 255, 255), white);
-  // background-color: white !important;
+  background-image: linear-gradient(5deg, rgb(235, 235, 235), rgb(235,235,235)) !important;
+  background-color: rgb(235, 235, 235) !important;
   color: black;
   text-decoration: underline;
-  text-decoration-color: orange;
+  // text-decoration-color: orange;
 }
 .cir {
   background-color: white;
   border-radius: 50%;
   width: 40px !important;
   height: 40px !important;
-  margin-left: 10px !important;
+  margin-left: 20px !important;
 }
 .cir:hover {
   transition: all 0.4s ease-out;
@@ -257,34 +280,41 @@ export default {
       {
         icon:
             "/images/italic.svg",
-            iconz:"images/italic-2.svg",
-        title: "Lettermark Logos"
+            iconz:"/images/italic-2.svg",
+        title: "Lettermark",
+        num: "Logos",
+      
       },
       { icon: "/images/w.svg",
-      iconz:"images/w-2.svg",
-       title: "Wordmark Logos" },
+      iconz:"/images/w-2.svg",
+       title: "Wordmark" ,
+       num: "Logos",},
       {
         icon:"/images/lemon.svg",
-        iconz:"images/lemon-2.svg",
-          title: "Pictorial Mark Logos"
+        iconz:"/images/lemon-2.svg",
+          title: "Pictorial Mark",
+          num: "Logos",
       },
       {
         icon:
           "/images/art.svg",
-          iconz:"images/art-2.svg",
-        title: "Abstract Mark Logos"
+          iconz:"/images/art-2.svg",
+        title: "Abstract Mark",
+        num: "Logos",
       },
       {
         icon:
         "/images/mask.svg",
-        iconz:"images/mask-2.svg",
-          title: " Mascot -Logos",
+        iconz:"/images/mask-2.svg",
+          title: "Mascot",
+          num: "Logos",
       },
       {
         icon:
           "/images/puzz.svg",
-          iconz:"images/puzz-2.svg",
-          title: "Combination Logos"
+          iconz:"/images/puzz-2.svg",
+          title: "Combination",
+          num: "Logos",
       }
     ],
     tabs: [

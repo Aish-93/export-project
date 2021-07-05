@@ -1,17 +1,18 @@
 <template>
   <v-container fluid class="d-flex  flex-column lighten-5" :class="{ colr: true }">
-    <v-row class="bojo">
-      <v-col class="col-6 bojo ml-7" style="color:#ffcc29;">
-        <ul>
-          <li>HOW DO I KNOW WHICH LOGO STYLE IS FOR ME?</li>
+    <v-row class="bojo d-flex justify-md-start justify-sm-center">
+      <v-col class="col-12  ml-md-4 ml-sm-5  bojo  " style="color:#ffcc29;">
+        <ul >
+          <li >HOW DO I KNOW WHICH LOGO STYLE IS FOR ME?</li>
         </ul>
       </v-col>
     </v-row>
-    <v-row class=" d-flex justify-end">
-      <v-col class="col-7  mr-12 display-1" :class="{ colr2: true }">
+    <v-row class=" d-flex justify-lg-space-between flex-lg-row
+    flex-md-column flex-sm-column ml-sm-4  ml-md-3 ">
+      <v-col class="col-lg-6   display-1" :class="{ colr2: true }">
         Different Types of Logo Styles
       </v-col>
-      <v-col class=" col-4 ml-3 d-flex justify-end  pr-10">
+      <v-col class=" col-lg-5 col-sm-12 mt-sm-5 mt-md-2 justify-md-start justify-sm-center ml-lg-3  d-flex justify-lg-end  ">
         <v-btn color="#ffcc29" dark class="btnz">
           Contact Us
           <div class="shine"></div>
@@ -26,7 +27,8 @@
     </v-row>
     <v-row class="d-flex justify-center mt-13 " style="height: 350px;">
       <!-- <v-col v-for="align in alignments" :key="align" :align-self="align"> -->
-      <v-col class="d-flex justify-center ">
+      
+       <v-col class="d-flex flex-row justify-center ">
         <v-card
           v-for="(temp, index) in logos"
           :key="index"
@@ -53,16 +55,17 @@
             </div>
           </v-row>
         </v-card>
+        
       </v-col>
     </v-row>
-    <v-row>
-      <v-col class="maxi col-5">
+    <v-row d-flex >
+      <v-col class="maxi col-md-5 col col-sm-12">
         <h1 class="display-2">{{ tabs[tab].title }}</h1>
         <div class="mt-3">
           {{ tabs[tab].text }}
         </div>
       </v-col>
-      <v-col class="col-7 maxia">
+      <v-col class="col-md-7 col-sm-12  d-flex maxia">
         <div class="siz ">
           <img :src="tabs[tab].images[0]" alt="" />
           <img :src="tabs[tab].images[1]" />
@@ -75,7 +78,7 @@
 <style lang="scss">
 * {
   font-family: 'Montserrat', sans-serif;
-  font-weight:bolder;
+  
 }
 .sst {
   // for arrow
@@ -189,6 +192,7 @@
 .bojo {
   // class for cards section
   margin-top: 3.6rem;
+  font-weight: bold;
 }
 .btnz {
   // for button
@@ -228,7 +232,7 @@
 }
 .maxia {
   background-color: white;
-  height: 800px;
+  // height: 800px;
   padding-top: 150px;
 
   display: flex;
@@ -237,8 +241,9 @@
 }
 .maxi {
   background-color: white;
-  height: 800px;
+  // height: 800px;
   padding-top: 50px;
+      padding: 50px;
 }
 
 .siz {
@@ -269,8 +274,15 @@ img {
 .cir:hover {
   transition: all 0.4s ease-out;
 }
+
+@media screen, (min-width: 480px ) and (max-width :768 px) {
+
+  
+}
+
 </style>
 <script>
+
 export default {
   data: () => ({
     alignments: ["center", "center", "center", "center", "center", "center"],
@@ -389,6 +401,7 @@ export default {
     //   }
     //   return this.ticks;
     // }
-  }
+  },
+   
 };
 </script>

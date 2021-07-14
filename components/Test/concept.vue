@@ -11,7 +11,7 @@ let kvArray = [{key: 1, value: 10},
 
 let reformattedArray = kvArray.map(obj => {
    let rObj = {}
-   rObj = obj.value
+   rObj[obj.key] = obj.value
    return rObj
 });
 console.log(reformattedArray)

@@ -1,5 +1,5 @@
 <template>
-  <v-container d-flex flex-column justify-content-center>
+  <v-container class="d-flex flex-column justify-content-center">
     <h2 class="mt-5 text-center">My vue todo App</h2>
 
     <!-- input  -->
@@ -30,7 +30,9 @@
           <tbody>
             <tr v-for="(item,index) in tasks" :key="index">
               <td>{{ item.name }}</td>
-              <td>{{ item.status }}</td>
+              <td >
+                <span @click="changeStatus(index)"
+                 class="pointer">{{ firstchar(item.status)  }}</span></td>
               <td>
                 <v-btn class="ma-2" text icon color="blue lighten-2" @click="editTask(index)">
                    Thumb up
@@ -47,13 +49,20 @@
     </template>
   </v-container>
 </template>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.pointer{
+cursor: pointer;
+width: 120px;
+}
+</style>
 <script>
 export default {
   data: function() {
     return {
       task:"",
       editedTask:null,
+      availableStatuses: ['to-do','in-progress','finished'],
+
       tasks: [
         {
           name: "Steal Banana from the home",
@@ -70,12 +79,17 @@ export default {
     submitTask(){
       if(this.task.length === 0) {
          return;
-      }else{
 
+
+      }if(this.editedTask === null){
+      
       this.tasks.push({
         name: this.task,
         status: 'To-do'
       });
+      }else{
+        this.tasks[this.editedTask].name = this.task;
+        this.editedTask = null;
       }
 
       this.task=" ";
@@ -86,8 +100,15 @@ export default {
     },
     editTask(index){
       this.task = this.tasks[index].name;
+      this.editedTask = index;
 
-    }
+    },
+    changeStatus(index){
+     let newIndex = this.availableStatuses.indexOf(this.tasks[index].status);
+      if(++newIndex >2 ) newIndex = 0;
+      this.tasks[index].status = this.availableStatuses[newIndex];
+
+    },
   }
 };
 </script>

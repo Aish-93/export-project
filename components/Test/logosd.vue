@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="d-flex  flex-column lighten-5" :class="{ colr: true }">
+  <v-container  class="d-flex  flex-column lighten-5" :class="{ colr: true }">
     <v-row class="bojo d-flex justify-md-start justify-sm-center">
       <v-col class="col-12  ml-md-4 ml-sm-5  bojo  " style="color:#ffcc29;">
         <ul >
@@ -25,10 +25,9 @@
         </v-btn>
       </v-col>
     </v-row>
-    <v-row class="d-flex justify-center mt-13 " style="height: 350px;">
-      <!-- <v-col v-for="align in alignments" :key="align" :align-self="align"> -->
-      
-       <v-col class="d-flex flex-row justify-center ">
+
+    <v-row class="d-none d-lg-flex justify-center mt-13 " style="height: 350px;">
+             <v-col class="d-none  d-lg-flex d-xl-flex flex-row justify-center ">
         <v-card
           v-for="(temp, index) in logos"
           :key="index"
@@ -43,9 +42,7 @@
         >
           <img :src="tab === index ? temp.iconz : temp.icon" class="benz" />
 
-          <!-- <v-icon large :color="tab === index ? 'black' : 'yellow darken-2'">
-            fa-arrow-right
-          </v-icon> -->
+        
           <div class="sides">{{ temp.title }}</div>
           <div class="sides">{{ temp.num }}</div>
 
@@ -55,9 +52,10 @@
             </div>
           </v-row>
         </v-card>
-        
       </v-col>
     </v-row>
+     <app-test-carousel :logos="logos" :tab="tab" :tabs="tabs" @tabChanged="tabWasChanged">
+    </app-test-carousel>
     <v-row d-flex >
       <v-col class="maxi col-md-5 col col-sm-12">
         <h1 class="display-2">{{ tabs[tab].title }}</h1>
@@ -207,7 +205,7 @@
   height: 50px !important;
   width: 190px;
   overflow: hidden;
-  
+  margin-right: 20px;
 }
 .btnz:hover {
   background-color:#ffcc29 !important;
@@ -282,7 +280,7 @@ img {
 
 </style>
 <script>
-
+import AppTestCarousel from '~/components/Test/carouselx';
 export default {
   data: () => ({
     alignments: ["center", "center", "center", "center", "center", "center"],
@@ -391,6 +389,9 @@ export default {
     add: function() {
       // this.ticks = event.target.value;
       console.log(this.tab);
+    },
+    tabWasChanged(data) {
+      this.tab = data
     }
 
     // flip: function() {
@@ -402,6 +403,9 @@ export default {
     //   return this.ticks;
     // }
   },
+  components:{
+    AppTestCarousel,
+  }
    
 };
 </script>
